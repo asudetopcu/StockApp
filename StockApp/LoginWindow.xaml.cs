@@ -53,7 +53,7 @@ namespace StockApp
                 else
                 {
                     // Müşteri panelini aç
-                    CustomerPanel customerPanel = new CustomerPanel();
+                    CustomerPanel customerPanel = new CustomerPanel(loggedInCustomer);
                     customerPanel.Show();
                 }
 

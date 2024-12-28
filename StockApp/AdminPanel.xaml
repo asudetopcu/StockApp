@@ -12,7 +12,7 @@
             <ColumnDefinition Width="479*"/>
         </Grid.ColumnDefinitions>
         <!-- TabControl for different management sections -->
-        <TabControl Grid.ColumnSpan="2">
+        <TabControl Grid.ColumnSpan="2" SelectionChanged="TabControl_SelectionChanged">
             <!-- Customer Management Tab -->
             <TabItem Header="Customer Management">
                 <Grid Margin="10">
@@ -91,19 +91,55 @@
             <!-- Order Management Tab -->
             <TabItem Header="Order Management">
                 <Grid Margin="10">
-                    <DataGrid x:Name="dataGridOrders" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="300" />
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Grid>
-                            <TextBox x:Name="txtOrderId" Width="150" Margin="5" ToolTip="Order ID" />
-                            <TextBlock Text="Order ID" Foreground="Gray" Margin="10,2,0,0" IsHitTestVisible="False" 
-                                       VerticalAlignment="Center" FontStyle="Italic" 
-                                       Visibility="{Binding Text.Length, ElementName=txtOrderId, Converter={StaticResource LengthToVisibilityConverter}}" />
+                    <DataGrid x:Name="dataGridOrders" AutoGenerateColumns="True" VerticalAlignment="Top" Height="415" />
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="452,0,455,68">
+                        <!--Order ID-->
+                        <Grid Margin="5">
+                            <TextBox x:Name="txtOrderId" Width="150" ToolTip="Enter Order ID" />
+                            <TextBlock Text="Order ID" Foreground="Gray" Margin="10,2,0,0" IsHitTestVisible="False"
+                           VerticalAlignment="Center" FontStyle="Italic"
+                           Visibility="{Binding Text.Length, ElementName=txtOrderId, Converter={StaticResource LengthToVisibilityConverter}}" />
                         </Grid>
-                        <Button Content="Approve Order" Width="120" Margin="5" Click="btnApproveOrder_Click" />
-                        <Button Content="Cancel Order" Width="120" Margin="5" Click="btnCancelOrder_Click" />
+
+                        <!-- Customer ID -->
+                        <!--
+                        <Grid Margin="5">
+                            <TextBox x:Name="txtCustomerId" Width="150" ToolTip="Enter Customer ID" />
+                            <TextBlock Text="Customer ID" Foreground="Gray" Margin="10,2,0,0" IsHitTestVisible="False"
+                           VerticalAlignment="Center" FontStyle="Italic"
+                           Visibility="{Binding Text.Length, ElementName=txtCustomerId, Converter={StaticResource LengthToVisibilityConverter}}" />
+                        </Grid>
+
+                        -->
+                        <!-- Product ID -->
+                        <!--
+                        <Grid Margin="5">
+                            <TextBox x:Name="txtOrderProductId" Width="150" ToolTip="Enter Product ID" />
+                            <TextBlock Text="Product ID" Foreground="Gray" Margin="10,2,0,0" IsHitTestVisible="False"
+                           VerticalAlignment="Center" FontStyle="Italic"
+                           Visibility="{Binding Text.Length, ElementName=txtOrderProductId, Converter={StaticResource LengthToVisibilityConverter}}" />
+                        </Grid>
+
+                        -->
+                        <!-- Quantity -->
+                        <!--
+                        <Grid Margin="5">
+                            <TextBox x:Name="txtQuantity" Width="150" ToolTip="Enter Quantity" />
+                            <TextBlock Text="Quantity" Foreground="Gray" Margin="10,2,0,0" IsHitTestVisible="False"
+                           VerticalAlignment="Center" FontStyle="Italic"
+                           Visibility="{Binding Text.Length, ElementName=txtQuantity, Converter={StaticResource LengthToVisibilityConverter}}" />
+                        </Grid>-->
+
+                        <!-- Action Buttons -->
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Button Content="Cancel Order" Width="120" Margin="5" Click="btnCancelOrder_Click" />
+                        </StackPanel>
                     </StackPanel>
+                    <Button Content="Approve  Orders" Margin="524,459,524,153" Click="btnApproveOrder_Click" />
                 </Grid>
             </TabItem>
+
+
         </TabControl>
 
         <!-- Progress Bar -->

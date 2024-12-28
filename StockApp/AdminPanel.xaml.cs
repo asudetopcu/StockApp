@@ -1,4 +1,6 @@
 ﻿using StockApp.Data;
+using StockApp.Models;
+using StockApp.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +24,7 @@ namespace StockApp
     /// </summary>
     public partial class AdminPanel : Window
     {
+        private readonly OrderService _orderService = new OrderService();
         public AdminPanel()
         {
             InitializeComponent();
@@ -204,12 +207,58 @@ namespace StockApp
             }
         }
 
-        private void btnApproveOrder_Click(object sender, RoutedEventArgs e)
+        public void ApproveOrder(int orderId)
         {
-            int orderId = int.Parse(txtOrderId.Text);
-            UpdateOrderStatus(orderId, "Completed");
-            LoadOrders();
+            string query = $"SELECT CustomerID, OrderDate FROM Orders WHERE OrderID = {orderId}";
+            DataTable orderData = DatabaseHelper.ExecuteQuery(query);
+
+            if (orderData.Rows.Count > 0)
+            {
+                int customerId = Convert.ToInt32(orderData.Rows[0]["CustomerID"]);
+                DateTime orderDate = Convert.ToDateTime(orderData.Rows[0]["OrderDate"]);
+                int waitTimeInSeconds = (int)(DateTime.Now - orderDate).TotalSeconds;
+
+                // Loglama ve dinamik öncelik güncellemesi
+                _orderService.LogOrderProcessing(customerId, orderId, LogType.Approved, "Order approved successfully.");
+                _orderService.UpdateCustomerPriorities();
+            }
         }
+
+
+        private async void btnApproveOrder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Bekleyen siparişleri getir ve onayla
+                string query = "SELECT OrderID, OrderDate, CustomerID FROM Orders WHERE OrderStatus = 'Pending' ORDER BY OrderDate";
+                DataTable pendingOrders = DatabaseHelper.ExecuteQuery(query);
+
+                foreach (DataRow order in pendingOrders.Rows)
+                {
+                    int orderId = Convert.ToInt32(order["OrderID"]);
+                    int customerId = Convert.ToInt32(order["CustomerID"]);
+                    DateTime orderDate = Convert.ToDateTime(order["OrderDate"]);
+
+                    // Bekleme süresi hesapla
+                    int waitTimeInSeconds = (int)(DateTime.Now - orderDate).TotalSeconds;
+
+                    // Siparişin durumunu güncelle
+                    UpdateOrderStatus(orderId, "Completed");
+
+                    // Log kaydı oluştur
+                    Logger.LogSuccess(customerId, orderId, $"Order approved after waiting {waitTimeInSeconds} seconds.");
+                }
+
+                MessageBox.Show("All pending orders have been approved.");
+                LoadOrders(); // Sipariş listesini yenile
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error approving orders: {ex.Message}");
+            }
+        }
+
+
 
         private void btnCancelOrder_Click(object sender, RoutedEventArgs e)
         {
@@ -220,9 +269,40 @@ namespace StockApp
 
         private void LoadOrders()
         {
-            string query = "SELECT * FROM Orders";
-            var orders = DatabaseHelper.ExecuteQuery(query);
-            dataGridOrders.ItemsSource = orders.DefaultView;
+            try
+            {
+                // Sipariş verilerini yükleme sorgusu
+                string query = @"
+                SELECT 
+                    o.OrderID AS 'Order ID', 
+                    c.CustomerName AS 'Customer Name', 
+                    p.ProductName AS 'Product Name', 
+                    o.Quantity AS 'Quantity',
+                    o.TotalPrice AS 'Total Price',
+                    DATE_FORMAT(o.OrderDate, '%Y-%m-%d %H:%i:%s') AS 'Order Date', 
+                    o.OrderStatus AS 'Status'
+                FROM Orders o
+                JOIN Customers c ON o.CustomerID = c.CustomerID
+                JOIN Products p ON o.ProductID = p.ProductID
+                ORDER BY o.OrderDate DESC";
+
+                // Verileri yükle
+                DataTable orders = DatabaseHelper.ExecuteQuery(query);
+
+                // Boş tablo kontrolü
+                if (orders.Rows.Count == 0)
+                {
+                    MessageBox.Show("No orders found.");
+                }
+
+                // DataGrid'e bağla
+                dataGridOrders.ItemsSource = orders.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                // Hata mesajını ve istif izini göster
+                MessageBox.Show($"Error loading orders: {ex.Message}\n{ex.StackTrace}");
+            }
         }
 
 
@@ -232,6 +312,19 @@ namespace StockApp
             var orders = DatabaseHelper.ExecuteQuery(query);
             dataGridOrders.ItemsSource = orders.DefaultView;
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Source is TabControl tabControl)
+            {
+                // Order Management tabına geçildiğinde siparişleri yükle
+                if (tabControl.SelectedItem is TabItem selectedTab && selectedTab.Header.ToString() == "Order Management")
+                {
+                    LoadOrders();
+                }
+            }
+        }
+
 
         private void btnGenerateCustomers_Click(object sender, RoutedEventArgs e)
         {

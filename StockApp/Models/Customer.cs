@@ -15,6 +15,8 @@ namespace StockApp.Models
         public string CustomerType { get; set; } // Premium or Standard
         public int TotalSpent { get; set; }
         public bool IsAdmin { get; set; } // TRUE if admin, FALSE otherwise
+        public double PriorityScore { get; set; } // Dinamik öncelik skoru
+        public DateTime OrderTime { get; set; } // Siparişin verildiği zamanı temsil eder
     }
 
 }

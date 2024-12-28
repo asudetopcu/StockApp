@@ -14,132 +14,134 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using StockApp.Data;
 using StockApp.Services;
+using StockApp.Models;
 
 
 namespace StockApp
 {
     public partial class CustomerPanel : Window
     {
+        private readonly Customer _loggedInCustomer;
         private OrderService _orderService;
-        public CustomerPanel()
+        public CustomerPanel(Customer loggedInCustomer)
         {
             InitializeComponent();
-            LoadCustomers();
-            LoadProducts();
+            _loggedInCustomer = loggedInCustomer;
             _orderService = new OrderService();
+            DisplayCustomerInfo();
+            LoadProducts();
         }
 
-        // Müşteri bilgilerini yükleme
-        private void LoadCustomers()
+        private void DisplayCustomerInfo()
         {
-            try
-            {
-                string query = "SELECT CustomerID, CustomerName, Budget, CustomerType, TotalSpent FROM Customers";
-                DataTable customers = DatabaseHelper.ExecuteQuery(query);
-                dataGridCustomers.ItemsSource = customers.DefaultView;
-
-                // Seçili müşterinin bakiyesini göster
-                dataGridCustomers.SelectionChanged += (s, e) =>
-                {
-                    if (dataGridCustomers.SelectedItem != null)
-                    {
-                        DataRowView selectedCustomer = (DataRowView)dataGridCustomers.SelectedItem;
-                        decimal budget = Convert.ToDecimal(selectedCustomer["Budget"]);
-                        MessageBox.Show($"Current Budget: {budget:C}");
-                    }
-                };
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading customers: {ex.Message}");
-            }
+            textBlockCustomerName.Text = _loggedInCustomer.CustomerName;
+            textBlockCustomerBudget.Text = $"{_loggedInCustomer.Budget:C}";
         }
 
 
         // Ürünleri yükleme
         private void LoadProducts()
         {
-            string query = "SELECT ProductName FROM Products WHERE Stock > 0";
-            DataTable products = DatabaseHelper.ExecuteQuery(query);
-
-            foreach (DataRow row in products.Rows)
+            try
             {
-                comboBoxProducts.Items.Add(row["ProductName"].ToString());
+                string query = "SELECT ProductID, ProductName, Stock, Price FROM Products WHERE Stock > 0";
+                DataTable products = DatabaseHelper.ExecuteQuery(query);
+
+                // Populate DataGrid with product details
+                dataGridProducts.ItemsSource = products.DefaultView;
+
+                // Populate ComboBox with product names
+                comboBoxProducts.Items.Clear();
+                foreach (DataRow row in products.Rows)
+                {
+                    comboBoxProducts.Items.Add(row["ProductName"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading products: {ex.Message}");
             }
         }
+
 
         // Sipariş oluşturma
         private void PlaceOrder_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (comboBoxProducts.SelectedItem == null || string.IsNullOrWhiteSpace(textBoxQuantity.Text))
+                // Ürün seçimi ve miktar girişini doğrula
+                if (comboBoxProducts.SelectedItem == null)
                 {
-                    MessageBox.Show("Please select a product and enter the quantity.");
+                    MessageBox.Show("Please select a product.");
                     return;
                 }
 
-                string productName = comboBoxProducts.SelectedItem.ToString();
-                int quantity = int.Parse(textBoxQuantity.Text);
+                if (!int.TryParse(textBoxQuantity.Text, out int quantity) || quantity <= 0)
+                {
+                    MessageBox.Show("Please enter a valid quantity greater than zero.");
+                    return;
+                }
 
-                string productQuery = $"SELECT ProductID, Stock, Price FROM Products WHERE ProductName = '{productName}'";
+                string selectedProductName = comboBoxProducts.SelectedItem.ToString();
+
+                // Ürün bilgilerini veritabanından alın
+                string productQuery = $"SELECT ProductID, Stock, Price FROM Products WHERE ProductName = '{selectedProductName}'";
                 DataTable productData = DatabaseHelper.ExecuteQuery(productQuery);
 
                 if (productData.Rows.Count == 0)
                 {
-                    MessageBox.Show("Selected product does not exist.");
+                    MessageBox.Show("The selected product does not exist.");
                     return;
                 }
 
                 int productId = Convert.ToInt32(productData.Rows[0]["ProductID"]);
-                int stock = Convert.ToInt32(productData.Rows[0]["Stock"]);
-                decimal price = Convert.ToDecimal(productData.Rows[0]["Price"]);
-                decimal totalCost = price * quantity;
+                int availableStock = Convert.ToInt32(productData.Rows[0]["Stock"]);
+                decimal productPrice = Convert.ToDecimal(productData.Rows[0]["Price"]);
+                decimal totalCost = productPrice * quantity;
 
-                if (quantity > stock)
+                // Stok ve bütçe kontrolü
+                if (quantity > availableStock)
                 {
                     MessageBox.Show("Insufficient stock for the selected product.");
                     return;
                 }
 
-                int customerId = GetCurrentCustomerId();
-
-                // Sipariş oluştur
-                _orderService.PurchaseProduct(customerId, productId, quantity);
-                MessageBox.Show("Purchase successful!");
-
-                // Ürün listesini güncelle
-                LoadProducts();
-
-                // Bütçeyi güncelle ve kullanıcıya göster
-                if (dataGridCustomers.SelectedItem != null)
+                if (totalCost > _loggedInCustomer.Budget)
                 {
-                    DataRowView selectedCustomer = (DataRowView)dataGridCustomers.SelectedItem;
-                    decimal updatedBudget = Convert.ToDecimal(selectedCustomer["Budget"]) - totalCost;
-                    selectedCustomer["Budget"] = updatedBudget; // GridView'deki bütçeyi güncelle
-                    textBlockCustomerBudget.Text = $"Current Budget: {updatedBudget:C}";
+                    MessageBox.Show("Insufficient budget.");
+                    return;
+                }
+
+                // Müşteriyi sıraya ekle ve dinamik öncelik güncellemesi yap
+                _loggedInCustomer.OrderTime = DateTime.Now; // Sipariş zamanını ayarla
+                _orderService.AddCustomerToQueue(_loggedInCustomer);
+                _orderService.UpdateCustomerPriorities();
+
+                // En yüksek öncelikli müşteriyi alın ve işlemi gerçekleştirin
+                Customer nextCustomer = _orderService.GetNextCustomer();
+                if (nextCustomer != null && nextCustomer.CustomerID == _loggedInCustomer.CustomerID)
+                {
+                    // Siparişi gerçekleştir
+                    _orderService.PurchaseProductAsync(nextCustomer.CustomerID, productId, quantity);
+
+                    // Bütçe ve ürün listesini güncelle
+                    _loggedInCustomer.Budget -= totalCost;
+                    textBlockCustomerBudget.Text = $"{_loggedInCustomer.Budget:C}";
+                    LoadProducts();
+
+                    MessageBox.Show("Purchase successful!");
+                }
+                else
+                {
+                    MessageBox.Show("Your order is in the queue. Please wait for processing.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"An error occurred while processing the order: {ex.Message}");
             }
         }
 
-
-
-        private int GetCurrentCustomerId()
-        {
-            // Geçerli bir müşteri seçimi olup olmadığını kontrol edin
-            if (dataGridCustomers.SelectedItem == null)
-            {
-                throw new InvalidOperationException("Please select a customer from the list.");
-            }
-
-            // Seçilen müşteri ID'sini döndür
-            DataRowView selectedCustomer = (DataRowView)dataGridCustomers.SelectedItem;
-            return Convert.ToInt32(selectedCustomer["CustomerID"]);
-        }
 
     }
 }
