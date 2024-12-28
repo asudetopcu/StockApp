@@ -25,7 +25,20 @@ namespace StockApp
         public AdminPanel()
         {
             InitializeComponent();
-            //LoadDataAsync(); // Asenkron verileri yükle
+            LoadDataAsync(); // Asenkron verileri yükle
+        }
+
+        private async void AdminPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await LoadDataAsync(); // Verileri yükler
+                LoadStockStatus();     // Stok durumu panelini yükler
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading admin panel: {ex.Message}");
+            }
         }
 
         private async Task LoadDataAsync()
@@ -34,6 +47,7 @@ namespace StockApp
             {
                 await Task.Run(() => LoadCustomers()); // Müşteri verilerini yükle
                 await Task.Run(() => LoadProducts());  // Ürün verilerini yükle
+                await Task.Run(() => LoadStockStatus());
             }
             catch (Exception ex)
             {
@@ -46,15 +60,21 @@ namespace StockApp
         {
             try
             {
-                string query = "SELECT * FROM Customers";
-                DataTable customers = await Task.Run(() => DatabaseHelper.ExecuteQuery(query)); // Asenkron çağrı
-                dataGridCustomers.ItemsSource = customers.DefaultView;
+                string query = "SELECT CustomerID, CustomerName, Budget, CustomerType, TotalSpent FROM Customers";
+                DataTable customers = await Task.Run(() => DatabaseHelper.ExecuteQuery(query));
+
+                // UI iş parçacığına dönerek UI elementlerini güncelle
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    dataGridCustomers.ItemsSource = customers.DefaultView;
+                });
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading customers: {ex.Message}");
             }
         }
+
 
         // Load Customers Button Click Event
         private void LoadCustomers_Click(object sender, RoutedEventArgs e)
@@ -74,10 +94,14 @@ namespace StockApp
         {
             try
             {
-                dataGridProducts.ItemsSource = null; // Önceki verileri temizle
                 string query = "SELECT * FROM Products";
-                DataTable products = await Task.Run(() => DatabaseHelper.ExecuteQuery(query)); // Asenkron çağrı
-                dataGridProducts.ItemsSource = products.DefaultView;
+                DataTable products = await Task.Run(() => DatabaseHelper.ExecuteQuery(query));
+
+                // UI iş parçacığına dönerek UI elementlerini güncelle
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    dataGridProducts.ItemsSource = products.DefaultView;
+                });
             }
             catch (Exception ex)
             {
@@ -85,11 +109,13 @@ namespace StockApp
             }
         }
 
+
         private void LoadProducts_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 LoadProducts(); // Ürün listesini yenilemek için LoadProducts çağrılır.
+                LoadStockStatus(); // Stok durumu tablosu ve grafiği yüklenir.
             }
             catch (Exception ex)
             {
@@ -221,26 +247,55 @@ namespace StockApp
             }
         }
 
-        public void UpdateStock(int productId, int quantityChange)
+        private async void LoadStockStatus()
         {
-            string query = $"UPDATE Products SET Stock = Stock + ({quantityChange}) WHERE ProductID = {productId}";
-            DatabaseHelper.ExecuteNonQueryAsync(query);
-            MessageBox.Show($"Stock updated successfully. Change: {quantityChange}");
-            LoadProducts(); // Listeyi yeniler
-        }
-
-        public bool CheckStock(int productId, int quantity)
-        {
-            string query = $"SELECT Stock FROM Products WHERE ProductID = {productId}";
-            DataTable productData = DatabaseHelper.ExecuteQuery(query);
-
-            if (productData.Rows.Count > 0)
+            try
             {
-                int currentStock = Convert.ToInt32(productData.Rows[0]["Stock"]);
-                return currentStock >= quantity;
-            }
-            return false;
-        }
+                string stockQuery = "SELECT ProductName AS 'Product', Stock AS 'Quantity' FROM Products";
+                DataTable stockTable = await Task.Run(() => DatabaseHelper.ExecuteQuery(stockQuery));
 
+                // UI iş parçacığına dönerek grafiği güncelle
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    stockBarChart.Items.Clear();
+                    foreach (DataRow row in stockTable.Rows)
+                    {
+                        int stock = Convert.ToInt32(row["Quantity"]);
+                        string productName = row["Product"].ToString();
+
+                        // Bar grafiği oluştur
+                        ProgressBar progressBar = new ProgressBar
+                        {
+                            Width = 200,
+                            Height = 20,
+                            Value = stock,
+                            Maximum = 500,
+                            ToolTip = $"{productName} - {stock} units"
+                        };
+
+                        TextBlock productLabel = new TextBlock
+                        {
+                            Text = productName,
+                            VerticalAlignment = VerticalAlignment.Center
+                        };
+
+                        StackPanel stockPanel = new StackPanel
+                        {
+                            Orientation = Orientation.Horizontal,
+                            Margin = new Thickness(5)
+                        };
+
+                        stockPanel.Children.Add(productLabel);
+                        stockPanel.Children.Add(progressBar);
+
+                        stockBarChart.Items.Add(stockPanel);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading stock status: {ex.Message}");
+            }
+        }
     }
 }

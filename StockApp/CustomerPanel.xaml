@@ -18,6 +18,8 @@
             <TextBlock Text="Quantity" Margin="5" />
             <TextBox x:Name="textBoxQuantity" Width="200" Margin="5" />
             <Button Content="Place Order" Width="100" Margin="5" Click="PlaceOrder_Click" />
+            <TextBlock x:Name="textBlockCustomerBudget" Text="Current Budget: " FontWeight="Bold" Margin="5" />
         </StackPanel>
+
     </Grid>
 </Window>

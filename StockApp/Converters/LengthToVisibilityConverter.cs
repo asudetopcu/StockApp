@@ -9,11 +9,11 @@ namespace StockApp.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string str && !string.IsNullOrWhiteSpace(str))
+            if (value is int length && length > 0)
             {
-                return Visibility.Visible;
+                return Visibility.Collapsed; // Eğer TextBox doluysa Placeholder kaybolur
             }
-            return Visibility.Collapsed;
+            return Visibility.Visible; // Eğer TextBox boşsa Placeholder görünür
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

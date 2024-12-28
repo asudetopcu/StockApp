@@ -3,44 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\source\\repos\\StockApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\adminpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\adminpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\customerpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\customerpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\adminpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\adminpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\converters\\lengthtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\converters\\lengthtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\randomcustomergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\randomcustomergenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\customerpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\customerpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,20 +19,12 @@
       "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\adminpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|solutionrelative:stockapp\\adminpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{74997CF7-4428-46E5-8F73-077537549B06}|StockApp\\StockApp.csproj|c:\\users\\hp\\source\\repos\\stockapp\\stockapp\\customerpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -78,160 +38,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "OrderService.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Services\\OrderService.cs",
-              "RelativeDocumentMoniker": "StockApp\\Services\\OrderService.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Services\\OrderService.cs",
-              "RelativeToolTip": "StockApp\\Services\\OrderService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T14:38:28.86Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LengthToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Converters\\LengthToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "StockApp\\Converters\\LengthToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Converters\\LengthToVisibilityConverter.cs",
-              "RelativeToolTip": "StockApp\\Converters\\LengthToVisibilityConverter.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T12:10:19.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "StockApp\\AssemblyInfo.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\AssemblyInfo.cs",
-              "RelativeToolTip": "StockApp\\AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T11:44:53.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Product.cs",
               "RelativeDocumentMoniker": "StockApp\\Models\\Product.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Product.cs",
               "RelativeToolTip": "StockApp\\Models\\Product.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAADwvxIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T11:44:01.605Z",
+              "WhenOpened": "2024-12-28T07:45:26.111Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Order.cs",
               "RelativeDocumentMoniker": "StockApp\\Models\\Order.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Order.cs",
               "RelativeToolTip": "StockApp\\Models\\Order.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAkwBgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T11:43:55.955Z",
+              "WhenOpened": "2024-12-28T07:45:10.423Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Log.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Log.cs",
-              "RelativeDocumentMoniker": "StockApp\\Models\\Log.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Log.cs",
-              "RelativeToolTip": "StockApp\\Models\\Log.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAYwBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T11:43:50.567Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 4,
               "Title": "DatabaseHelper.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Data\\DatabaseHelper.cs",
               "RelativeDocumentMoniker": "StockApp\\Data\\DatabaseHelper.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Data\\DatabaseHelper.cs",
               "RelativeToolTip": "StockApp\\Data\\DatabaseHelper.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAUwDIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAuwCgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T18:53:26.975Z",
+              "WhenOpened": "2024-12-28T07:44:58.841Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RandomCustomerGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\RandomCustomerGenerator.cs",
-              "RelativeDocumentMoniker": "StockApp\\RandomCustomerGenerator.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\RandomCustomerGenerator.cs",
-              "RelativeToolTip": "StockApp\\RandomCustomerGenerator.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAcwD8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "StockApp\\Services\\OrderService.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Services\\OrderService.cs",
+              "RelativeToolTip": "StockApp\\Services\\OrderService.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAAD8AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T14:27:08.862Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LoginWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\LoginWindow.xaml.cs",
-              "RelativeDocumentMoniker": "StockApp\\LoginWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\LoginWindow.xaml.cs",
-              "RelativeToolTip": "StockApp\\LoginWindow.xaml.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAYwA0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T10:57:40.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LoginWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\LoginWindow.xaml",
-              "RelativeDocumentMoniker": "StockApp\\LoginWindow.xaml",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\LoginWindow.xaml",
-              "RelativeToolTip": "StockApp\\LoginWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-24T10:57:14.313Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Customer.cs",
-              "RelativeDocumentMoniker": "StockApp\\Models\\Customer.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Models\\Customer.cs",
-              "RelativeToolTip": "StockApp\\Models\\Customer.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T10:55:58.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\App.xaml.cs",
-              "RelativeDocumentMoniker": "StockApp\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\App.xaml.cs",
-              "RelativeToolTip": "StockApp\\App.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T10:49:18.581Z",
+              "WhenOpened": "2024-12-25T14:38:28.86Z",
               "EditorCaption": ""
             },
             {
@@ -242,57 +100,34 @@
               "RelativeDocumentMoniker": "StockApp\\CustomerPanel.xaml.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\CustomerPanel.xaml.cs",
               "RelativeToolTip": "StockApp\\CustomerPanel.xaml.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAF4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-24T09:12:18.691Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 6,
               "Title": "CustomerPanel.xaml",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\CustomerPanel.xaml",
               "RelativeDocumentMoniker": "StockApp\\CustomerPanel.xaml",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\CustomerPanel.xaml",
               "RelativeToolTip": "StockApp\\CustomerPanel.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-24T09:10:08.671Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\App.xaml",
-              "RelativeDocumentMoniker": "StockApp\\App.xaml",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\App.xaml",
-              "RelativeToolTip": "StockApp\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-24T08:17:55.381Z",
+              "WhenOpened": "2024-12-24T09:10:08.671Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "AdminPanel.xaml.cs",
               "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\AdminPanel.xaml.cs",
               "RelativeDocumentMoniker": "StockApp\\AdminPanel.xaml.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\AdminPanel.xaml.cs",
               "RelativeToolTip": "StockApp\\AdminPanel.xaml.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAuwGwAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAABIBAAAAAAAAAAAmwC0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-24T08:02:49.291Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminPanel.xaml",
-              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\AdminPanel.xaml",
-              "RelativeDocumentMoniker": "StockApp\\AdminPanel.xaml",
-              "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\AdminPanel.xaml",
-              "RelativeToolTip": "StockApp\\AdminPanel.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-24T07:59:53.068Z",
               "EditorCaption": ""
             }
           ]

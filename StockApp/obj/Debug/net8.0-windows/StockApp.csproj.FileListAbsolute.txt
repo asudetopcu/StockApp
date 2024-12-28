@@ -41,3 +41,4 @@ C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.pdb
 C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.genruntimeconfig.cache
 C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\ref\StockApp.dll
 C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.sourcelink.json
