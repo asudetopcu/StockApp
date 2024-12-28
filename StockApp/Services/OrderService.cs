@@ -54,7 +54,7 @@ namespace StockApp.Services
 
                         // Sipariş kaydı
                         string insertOrderQuery = "INSERT INTO Orders (CustomerID, ProductID, Quantity, TotalPrice, OrderDate, OrderStatus) " +
-                                          "VALUES (@CustomerID, @ProductID, @Quantity, @TotalPrice, NOW(), @OrderStatus)";
+                                                  "VALUES (@CustomerID, @ProductID, @Quantity, @TotalPrice, NOW(), @OrderStatus)";
                         MySqlCommand insertOrderCommand = new MySqlCommand(insertOrderQuery, connection, transaction);
                         insertOrderCommand.Parameters.AddWithValue("@CustomerID", customerId);
                         insertOrderCommand.Parameters.AddWithValue("@ProductID", productId);
@@ -63,12 +63,11 @@ namespace StockApp.Services
                         insertOrderCommand.Parameters.AddWithValue("@OrderStatus", "Completed");
                         insertOrderCommand.ExecuteNonQuery();
 
-
                         // Müşteri bakiyesi güncelleme
-                        string updateBudgetQuery = $"UPDATE Customers SET Budget = Budget - {totalCost}, TotalSpent = TotalSpent + {totalCost} WHERE CustomerID = {customerId}";
+                        string updateBudgetQuery = $"UPDATE Customers SET Budget = Budget - {totalCost.ToString(CultureInfo.InvariantCulture)}, TotalSpent = TotalSpent + {totalCost.ToString(CultureInfo.InvariantCulture)} WHERE CustomerID = {customerId}";
                         MySqlCommand updateBudgetCommand = new MySqlCommand(updateBudgetQuery, connection, transaction);
                         updateBudgetCommand.ExecuteNonQuery();
-                        
+
                         // Transaction'u onayla
                         transaction.Commit();
                     }

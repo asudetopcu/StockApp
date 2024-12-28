@@ -50,8 +50,7 @@
               "RelativeToolTip": "StockApp\\Models\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:45:26.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:45:26.111Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "StockApp\\Models\\Order.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:45:10.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:45:10.423Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "StockApp\\Data\\DatabaseHelper.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAuwCgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T07:44:58.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-28T07:44:58.841Z"
             },
             {
               "$type": "Document",
@@ -87,7 +84,7 @@
               "RelativeDocumentMoniker": "StockApp\\Services\\OrderService.cs",
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\Services\\OrderService.cs",
               "RelativeToolTip": "StockApp\\Services\\OrderService.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCAAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-25T14:38:28.86Z",
               "EditorCaption": ""
@@ -102,8 +99,7 @@
               "RelativeToolTip": "StockApp\\CustomerPanel.xaml.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T09:12:18.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T09:12:18.691Z"
             },
             {
               "$type": "Document",
@@ -114,8 +110,7 @@
               "ToolTip": "C:\\Users\\HP\\source\\repos\\StockApp\\StockApp\\CustomerPanel.xaml",
               "RelativeToolTip": "StockApp\\CustomerPanel.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-24T09:10:08.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T09:10:08.671Z"
             },
             {
               "$type": "Document",
@@ -127,8 +122,7 @@
               "RelativeToolTip": "StockApp\\AdminPanel.xaml.cs",
               "ViewState": "AgIAABIBAAAAAAAAAAAmwC0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T08:02:49.291Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T08:02:49.291Z"
             }
           ]
         }
