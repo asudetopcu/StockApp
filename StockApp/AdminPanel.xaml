@@ -13,14 +13,21 @@
         </Grid.ColumnDefinitions>
         <!-- TabControl for different management sections -->
         <TabControl Grid.ColumnSpan="2" SelectionChanged="TabControl_SelectionChanged">
+			
             <!-- Customer Management Tab -->
-            <TabItem Header="Customer Management">
-                <Grid Margin="10">
-                    <DataGrid x:Name="dataGridCustomers" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="400" />
-                    <Button Content="Load Customers" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Margin="10" Click="LoadCustomers_Click" />
-                    <Button Content="Generate Customers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10" Click="btnGenerateCustomers_Click" />
-                </Grid>
-            </TabItem>
+           <TabItem Header="Customer Management">
+            <Grid Margin="10">
+                <!-- DataGrid, üstte hizalı -->
+                <DataGrid x:Name="dataGridCustomers" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="400" />
+        
+                <!-- Butonlar, DataGrid'in altında -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,10,0,0">
+                    <Button Content="Load Customers" Width="150" Click="LoadCustomers_Click" />
+                    <Button Content="Generate Customers" Width="150" Margin="10,0,0,0" Click="btnGenerateCustomers_Click" />
+				    <Button Content="log Out" Width="100"  Margin="10,0,0,0" Background="#B22222" Foreground="White"  Click="BackToLogin_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
 
             <TabItem Header="Product Management">
                 <Grid Margin="10">
@@ -86,12 +93,23 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-
+                                
+			<TabItem Header="Logs">
+    <Grid Margin="10">
+        <DataGrid x:Name="dataGridLogs" AutoGenerateColumns="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        <Button Content="Refresh Logs" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="LoadLogs_Click" />
+    </Grid>
+</TabItem>
 
             <!-- Order Management Tab -->
             <TabItem Header="Order Management">
                 <Grid Margin="10">
-                    <DataGrid x:Name="dataGridOrders" AutoGenerateColumns="True" VerticalAlignment="Top" Height="415" />
+                    <DataGrid x:Name="dataGridQueue" AutoGenerateColumns="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+
+                    <Button Content="Approve Next Order" Margin="10,630,0,0" Width="150" Click="ApproveNextOrder_Click" />
+
+                    <Button Content="Refresh Queue" Margin="10,630,0,0" Width="150" Click="LoadOrderQueue_Click" />
+
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="452,0,455,68">
                         <!--Order ID-->
                         <Grid Margin="5">
@@ -131,11 +149,11 @@
                         </Grid>-->
 
                         <!-- Action Buttons -->
-                        <StackPanel Orientation="Horizontal" Margin="5">
-                            <Button Content="Cancel Order" Width="120" Margin="5" Click="btnCancelOrder_Click" />
-                        </StackPanel>
-                    </StackPanel>
-                    <Button Content="Approve  Orders" Margin="524,459,524,153" Click="btnApproveOrder_Click" />
+						<StackPanel Orientation="Horizontal" Margin="5">
+							<Button Content="Cancel Order" Width="120" Margin="5" Click="btnCancelOrder_Click" />
+						</StackPanel>
+					</StackPanel>
+					<Button Content="Approve Orders" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,472,0,0" Click="btnApproveOrder_Click" />
                 </Grid>
             </TabItem>
 

@@ -63,7 +63,8 @@ namespace StockApp
         {
             try
             {
-                string query = "SELECT CustomerID, CustomerName, Budget, CustomerType, TotalSpent FROM Customers";
+                // Admin müşteriyi dışarıda bırakan sorgu
+                string query = "SELECT CustomerID, CustomerName, Budget, CustomerType, TotalSpent FROM Customers WHERE CustomerName != 'Admin'";
                 DataTable customers = await Task.Run(() => DatabaseHelper.ExecuteQuery(query));
 
                 // UI iş parçacığına dönerek UI elementlerini güncelle
@@ -77,6 +78,35 @@ namespace StockApp
                 MessageBox.Show($"Error loading customers: {ex.Message}");
             }
         }
+
+        public void LoadLogs()
+        {
+            string query = "SELECT * FROM Logs ORDER BY LogDate DESC";
+
+            try
+            {
+                DataTable logs = DatabaseHelper.ExecuteQuery(query);
+                dataGridLogs.ItemsSource = logs.DefaultView; // DataGrid'e bağlama
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading logs: {ex.Message}");
+            }
+        }
+
+        private void LoadLogs_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var logService = new LogService();
+                logService.LoadLogs(dataGridLogs); // DataGrid'e logları yükle
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading logs: {ex.Message}");
+            }
+        }
+
 
 
         // Load Customers Button Click Event
@@ -229,32 +259,40 @@ namespace StockApp
         {
             try
             {
-                // Bekleyen siparişleri getir ve onayla
-                string query = "SELECT OrderID, OrderDate, CustomerID FROM Orders WHERE OrderStatus = 'Pending' ORDER BY OrderDate";
-                DataTable pendingOrders = DatabaseHelper.ExecuteQuery(query);
+                // Tüm pending siparişleri complete yap
+                await _orderService.UpdateOrdersToCompletedAsync();
 
-                foreach (DataRow order in pendingOrders.Rows)
-                {
-                    int orderId = Convert.ToInt32(order["OrderID"]);
-                    int customerId = Convert.ToInt32(order["CustomerID"]);
-                    DateTime orderDate = Convert.ToDateTime(order["OrderDate"]);
+                // DataGrid'i güncelle
+                _orderService.LoadQueueData(dataGridQueue);
 
-                    // Bekleme süresi hesapla
-                    int waitTimeInSeconds = (int)(DateTime.Now - orderDate).TotalSeconds;
+                // Complete olan siparişleri sil
+                await _orderService.DeleteCompletedOrdersAsync();
 
-                    // Siparişin durumunu güncelle
-                    UpdateOrderStatus(orderId, "Completed");
+                // DataGrid'i yeniden güncelle
+                _orderService.LoadQueueData(dataGridQueue);
 
-                    // Log kaydı oluştur
-                    Logger.LogSuccess(customerId, orderId, $"Order approved after waiting {waitTimeInSeconds} seconds.");
-                }
+                // Logs tabını güncelle
+                LoadLogs();
 
-                MessageBox.Show("All pending orders have been approved.");
-                LoadOrders(); // Sipariş listesini yenile
+                MessageBox.Show("Pending orders have been completed and deleted!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error approving orders: {ex.Message}");
+                MessageBox.Show($"Error processing orders: {ex.Message}");
+            }
+        }
+
+        private async void ApproveNextOrder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await _orderService.ProcessNextOrderAsync();
+                MessageBox.Show("Next order processed successfully!");
+                LoadOrders(); // Sipariş listesini güncelle
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
@@ -267,50 +305,63 @@ namespace StockApp
             LoadOrders();
         }
 
-        private void LoadOrders()
+        private void SortOrders(DataTable orders)
+        {
+            var sortedOrders = orders.AsEnumerable()
+        .OrderBy(row => row["Customer Type"].ToString() == "Premium" ? 0 : 1) // Premium müşteriler önde
+        .ThenBy(row => Convert.ToDateTime(row["Order Date"])) // Sipariş tarihi sıralaması
+        .CopyToDataTable();
+
+            dataGridQueue.ItemsSource = sortedOrders.DefaultView;
+        }
+
+        
+
+
+        public void LoadOrders()
         {
             try
             {
-                // Sipariş verilerini yükleme sorgusu
                 string query = @"
-                SELECT 
-                    o.OrderID AS 'Order ID', 
-                    c.CustomerName AS 'Customer Name', 
-                    p.ProductName AS 'Product Name', 
-                    o.Quantity AS 'Quantity',
-                    o.TotalPrice AS 'Total Price',
-                    DATE_FORMAT(o.OrderDate, '%Y-%m-%d %H:%i:%s') AS 'Order Date', 
-                    o.OrderStatus AS 'Status'
-                FROM Orders o
-                JOIN Customers c ON o.CustomerID = c.CustomerID
-                JOIN Products p ON o.ProductID = p.ProductID
-                ORDER BY o.OrderDate DESC";
+           SELECT 
+               o.OrderID AS 'Order ID', 
+               c.CustomerName AS 'Customer Name', 
+               c.CustomerType AS 'Customer Type', 
+               p.ProductName AS 'Product Name', 
+               o.Quantity AS 'Quantity',
+               o.TotalPrice AS 'Total Price',
+               o.OrderDate AS 'Order Date', 
+               o.OrderStatus AS 'Status'
+           FROM Orders o
+           JOIN Customers c ON o.CustomerID = c.CustomerID
+           JOIN Products p ON o.ProductID = p.ProductID
+           ORDER BY 
+               CASE WHEN c.CustomerType = 'Premium' THEN 0 ELSE 1 END, 
+               o.OrderDate ASC";
 
-                // Verileri yükle
+                // `orders` değişkenini doldurun
                 DataTable orders = DatabaseHelper.ExecuteQuery(query);
 
-                // Boş tablo kontrolü
                 if (orders.Rows.Count == 0)
                 {
                     MessageBox.Show("No orders found.");
+                    return;
                 }
 
                 // DataGrid'e bağla
-                dataGridOrders.ItemsSource = orders.DefaultView;
+                dataGridQueue.ItemsSource = orders.DefaultView;
+                SortOrders(orders);
             }
             catch (Exception ex)
             {
-                // Hata mesajını ve istif izini göster
-                MessageBox.Show($"Error loading orders: {ex.Message}\n{ex.StackTrace}");
+                MessageBox.Show($"Error loading orders: {ex.Message}");
             }
         }
 
 
         private void LoadOrders_Click(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT * FROM Orders";
-            var orders = DatabaseHelper.ExecuteQuery(query);
-            dataGridOrders.ItemsSource = orders.DefaultView;
+            LoadOrders();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -323,6 +374,22 @@ namespace StockApp
                     LoadOrders();
                 }
             }
+        }
+
+        private void LoadOrderQueue_Click(object sender, RoutedEventArgs e)
+        {
+            List<Customer> queue = _orderService.GetAllCustomersInQueue();
+            var queueData = queue.Select((customer, index) => new
+            {
+                Rank = index + 1,
+                CustomerID = customer.CustomerID,
+                Name = customer.CustomerName,
+                Type = customer.CustomerType,
+                Budget = customer.Budget,
+                OrderTime = customer.OrderTime.ToString("yyyy-MM-dd HH:mm:ss")
+            }).ToList();
+
+            dataGridQueue.ItemsSource = queueData;
         }
 
 
@@ -338,6 +405,26 @@ namespace StockApp
             {
                 MessageBox.Show($"Error generating customers: {ex.Message}");
             }
+        }
+        private void LoadQueue()
+        {
+            var customersInQueue = _orderService.GetAllCustomersInQueue();
+
+            // DataGrid'e bağla
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                dataGridQueue.ItemsSource = customersInQueue;
+            });
+        }
+
+        private void BackToLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Giriş panelini aç
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+
+            // Mevcut pencereyi kapat
+            this.Close();
         }
 
         private async void LoadStockStatus()

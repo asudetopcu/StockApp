@@ -11,7 +11,7 @@ namespace StockApp.Data
 {
     public static class DatabaseHelper
     {
-        private const string ConnectionString = "Server=localhost;Database=StockManagement;Uid=root;Pwd=password123;";
+        private const string ConnectionString = "Server=localhost;Database=StockManagement;Uid=root;Pwd=1234;";
 
         public static MySqlConnection GetConnection()
         {

@@ -23,7 +23,7 @@
             <TextBlock Text="Quantity" Margin="5" />
             <TextBox x:Name="textBoxQuantity" Width="200" Margin="5" />
             <Button Content="Place Order" Width="100" Margin="5" Click="PlaceOrder_Click" />
+			<Button Content="Log Out" Width="100" Margin="10" Background="#B22222" Foreground="White" Click="BackToLogin_Click" />
         </StackPanel>
-
     </StackPanel>
 </Window>

@@ -49,7 +49,7 @@ namespace StockApp.Data
 
         private static void ClearCustomersFromDatabase()
         {
-            string query = "DELETE FROM Customers"; // Müşteri tablosunu temizler
+            string query = "DELETE FROM Customers WHERE IsAdmin = FALSE"; // Sadece admin olmayan kullanıcıları siler
             DatabaseHelper.ExecuteNonQueryAsync(query);
         }
 

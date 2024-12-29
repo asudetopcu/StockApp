@@ -42,3 +42,47 @@ C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\refint\Stock
 C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.pdb
 C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.genruntimeconfig.cache
 C:\Users\HP\source\repos\StockApp\StockApp\obj\Debug\net8.0-windows\ref\StockApp.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.csproj.AssemblyReference.cache
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\AdminPanel.baml
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\CustomerPanel.baml
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\LoginWindow.baml
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\AdminPanel.g.cs
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\CustomerPanel.g.cs
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\LoginWindow.g.cs
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp_MarkupCompile.cache
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp_MarkupCompile.lref
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\App.baml
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.g.resources
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\refint\StockApp.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.pdb
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\StockApp.exe
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\StockApp.deps.json
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\StockApp.runtimeconfig.json
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\StockApp.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\StockApp.pdb
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\Google.Protobuf.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\K4os.Compression.LZ4.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\K4os.Hash.xxHash.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\MaterialDesignColors.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\MySql.Data.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\ZstdSharp.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.AssemblyInfoInputs.cache
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.AssemblyInfo.cs
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.csproj.CoreCompileInputs.cache
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.sourcelink.json
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.csproj.Up2Date
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.dll
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\StockApp.genruntimeconfig.cache
+C:\Users\İrem Yıldız Kurt\Desktop\StockApp\StockApp\obj\Debug\net8.0-windows\ref\StockApp.dll

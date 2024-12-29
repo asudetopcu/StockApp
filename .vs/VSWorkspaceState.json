@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\StockApp",
+    "\\StockApp\\Converters",
+    "\\StockApp\\Data",
+    "\\StockApp\\Models",
+    "\\StockApp\\Services"
+  ],
+  "SelectedNode": "\\StockApp\\CustomerPanel.xaml.cs",
+  "PreviewInSolutionExplorer": false
+}

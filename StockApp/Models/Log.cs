@@ -23,8 +23,8 @@ namespace StockApp.Models
         public string LogDetails { get; set; }
 
         // Optional navigation properties
-        public Customer Customer { get; set; }
-        public Order Order { get; set; }
+        public Customer? Customer { get; set; } // Nullable yapıldı
+        public Order? Order { get; set; } // Nullable yapıldı
     }
 
 }

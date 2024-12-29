@@ -62,6 +62,15 @@ namespace StockApp
                 MessageBox.Show($"Error loading products: {ex.Message}");
             }
         }
+        private void BackToLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Giriş panelini aç
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+
+            // Mevcut pencereyi kapat
+            this.Close();
+        }
 
 
         // Sipariş oluşturma
@@ -69,7 +78,6 @@ namespace StockApp
         {
             try
             {
-                // Ürün seçimi ve miktar girişini doğrula
                 if (comboBoxProducts.SelectedItem == null)
                 {
                     MessageBox.Show("Please select a product.");
@@ -78,13 +86,13 @@ namespace StockApp
 
                 if (!int.TryParse(textBoxQuantity.Text, out int quantity) || quantity <= 0)
                 {
-                    MessageBox.Show("Please enter a valid quantity greater than zero.");
+                    MessageBox.Show("Please enter a valid quantity.");
                     return;
                 }
 
                 string selectedProductName = comboBoxProducts.SelectedItem.ToString();
 
-                // Ürün bilgilerini veritabanından alın
+                // Ürün bilgilerini al
                 string productQuery = $"SELECT ProductID, Stock, Price FROM Products WHERE ProductName = '{selectedProductName}'";
                 DataTable productData = DatabaseHelper.ExecuteQuery(productQuery);
 
@@ -99,49 +107,45 @@ namespace StockApp
                 decimal productPrice = Convert.ToDecimal(productData.Rows[0]["Price"]);
                 decimal totalCost = productPrice * quantity;
 
-                // Stok ve bütçe kontrolü
+                // Stok kontrolü
                 if (quantity > availableStock)
                 {
                     MessageBox.Show("Insufficient stock for the selected product.");
                     return;
                 }
 
+                // Müşteri bütçesi kontrolü
                 if (totalCost > _loggedInCustomer.Budget)
                 {
                     MessageBox.Show("Insufficient budget.");
                     return;
                 }
 
-                // Müşteriyi sıraya ekle ve dinamik öncelik güncellemesi yap
-                _loggedInCustomer.OrderTime = DateTime.Now; // Sipariş zamanını ayarla
-                _orderService.AddCustomerToQueue(_loggedInCustomer);
-                _orderService.UpdateCustomerPriorities();
+                // Siparişi `Orders` tablosuna ekle
+                string insertOrderQuery = $@"
+            INSERT INTO Orders (CustomerID, ProductID, Quantity, TotalPrice, OrderStatus) 
+            VALUES ({_loggedInCustomer.CustomerID}, {productId}, {quantity}, {totalCost}, 'Pending')";
+                DatabaseHelper.ExecuteNonQuery(insertOrderQuery);
 
-                // En yüksek öncelikli müşteriyi alın ve işlemi gerçekleştirin
-                Customer nextCustomer = _orderService.GetNextCustomer();
-                if (nextCustomer != null && nextCustomer.CustomerID == _loggedInCustomer.CustomerID)
-                {
-                    // Siparişi gerçekleştir
-                    _orderService.PurchaseProductAsync(nextCustomer.CustomerID, productId, quantity);
+                // Stoğu güncelle
+                string updateStockQuery = $"UPDATE Products SET Stock = Stock - {quantity} WHERE ProductID = {productId}";
+                DatabaseHelper.ExecuteNonQuery(updateStockQuery);
 
-                    // Bütçe ve ürün listesini güncelle
-                    _loggedInCustomer.Budget -= totalCost;
-                    textBlockCustomerBudget.Text = $"{_loggedInCustomer.Budget:C}";
-                    LoadProducts();
+                // Müşteri bütçesini güncelle
+                _loggedInCustomer.Budget -= totalCost;
+                textBlockCustomerBudget.Text = $"{_loggedInCustomer.Budget:C}";
 
-                    MessageBox.Show("Purchase successful!");
-                }
-                else
-                {
-                    MessageBox.Show("Your order is in the queue. Please wait for processing.");
-                }
+                MessageBox.Show("Order placed successfully.");
+                LoadProducts();
+                // AdminPanel sınıfındaki LoadOrders metodunu çağır
+                AdminPanel adminPanel = new AdminPanel();
+                adminPanel.LoadOrders(); // Metodun burada çağrıldığından emin olun
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while processing the order: {ex.Message}");
+                MessageBox.Show($"Error placing order: {ex.Message}");
             }
+
         }
-
-
-    }
+        }
 }
